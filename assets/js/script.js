@@ -69,6 +69,17 @@
 	}
 
 
+	// Open menu
+$('.mobile-nav-toggler').on('click', function() {
+    $('body').addClass('mobile-menu-visible');
+});
+
+// Close menu
+$('.mobile-menu .menu-backdrop, .mobile-menu .close-btn').on('click', function() {
+    $('body').removeClass('mobile-menu-visible');
+});
+
+
 	//Category Dropdown Toggle
 	if($('.category-menu li.category-dropdown ul').length){
 		$('.category-menu .category-list li.category-dropdown').append('<div class="dropdown-btn"><span class="icon-1"></span></div>');
