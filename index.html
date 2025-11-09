@@ -1,877 +1,1439 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<title>DaraCo Technologies</title>
-
-<!-- Fav Icon -->
-<link rel="icon" href="assets/dara_logo.png" type="image/x-icon">
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-
-<!-- Stylesheets -->
-<link href="assets/css/font-awesome-all.css" rel="stylesheet">
-<link href="assets/css/flaticon.css" rel="stylesheet">
-<link href="assets/css/owl.css" rel="stylesheet">
-<link href="assets/css/bootstrap.css" rel="stylesheet">
-<link href="assets/css/jquery.fancybox.min.css" rel="stylesheet">
-<link href="assets/css/animate.css" rel="stylesheet">
-<link href="assets/css/nice-select.css" rel="stylesheet">
-<link href="assets/css/odometer.css" rel="stylesheet">
-<link href="assets/css/elpath.css" rel="stylesheet">
-<link href="assets/css/rtl.css" rel="stylesheet">
-<link href="assets/css/style.css" rel="stylesheet">
-<link href="assets/css/module-css/header.css" rel="stylesheet">
-<link href="assets/css/module-css/banner.css" rel="stylesheet">
-<link href="assets/css/module-css/feature.css" rel="stylesheet">
-<link href="assets/css/module-css/about.css" rel="stylesheet">
-<link href="assets/css/module-css/service.css" rel="stylesheet">
-<link href="assets/css/module-css/process.css" rel="stylesheet">
-<link href="assets/css/module-css/funfact.css" rel="stylesheet">
-<link href="assets/css/module-css/video.css" rel="stylesheet">
-<link href="assets/css/module-css/contact.css" rel="stylesheet">
-<link href="assets/css/module-css/testimonial.css" rel="stylesheet">
-<link href="assets/css/module-css/brand.css" rel="stylesheet">
-<link href="assets/css/module-css/project.css" rel="stylesheet">
-<link href="assets/css/module-css/cta.css" rel="stylesheet">
-<link href="assets/css/module-css/news.css" rel="stylesheet">
-<link href="assets/css/module-css/footer.css" rel="stylesheet">
-<link href="assets/css/responsive.css" rel="stylesheet">
-
-</head>
-
-<body>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DaraCo Technologies - Your Trusted Technology Partner</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Add these styles to your custom CSS file or in a <style> tag in the <head> section */
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
 
-/* ============================
-   STICKY FOOTER FIX
-   ============================ */
+        :root {
+            --primary: #FF6B35;
+            --secondary: #4ECDC4;
+            --accent: #FFD93D;
+            --dark: #0F0F1E;
+            --dark-blue: #1A1A3E;
+            --purple: #9D4EDD;
+            --light: #F8F9FA;
+        }
 
-/* Ensure html and body take full height */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            overflow-x: hidden;
+            background: var(--dark);
+        }
 
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
 
-/* Push footer to bottom */
-.main-footer {
-    margin-top: auto;
-}
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
 
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(15, 15, 30, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 1.2rem 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .navbar.scrolled {
+            padding: 0.8rem 0;
+            background: rgba(15, 15, 30, 0.95);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .navbar-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            font-weight: 500;
+            margin: 0 1.5rem;
+            font-size: 0.95rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 6px;
+            height: 6px;
+            background: var(--secondary);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        /* Hero Section - Unique Design */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0F0F1E 0%, #1A1A3E 50%, #2D1B69 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(157, 78, 221, 0.15) 0%, transparent 70%);
+            top: -400px;
+            right: -300px;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(78, 205, 196, 0.1) 0%, transparent 70%);
+            bottom: -200px;
+            left: -200px;
+            animation: pulse 6s ease-in-out infinite reverse;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.1) rotate(90deg); opacity: 0.8; }
+        }
+
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(78, 205, 196, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(78, 205, 196, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(78, 205, 196, 0.1);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            border-radius: 50px;
+            color: var(--secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 50%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .btn-hero {
+            padding: 18px 40px;
+            font-weight: 600;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-hero:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary-hero {
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            color: white;
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-primary-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(255, 107, 53, 0.5);
+        }
+
+        .btn-outline-hero {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline-hero:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 500px;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .floating-card-1 {
+            top: 50px;
+            right: 100px;
+            width: 280px;
+            animation: float1 6s ease-in-out infinite;
+        }
+
+        .floating-card-2 {
+            bottom: 100px;
+            right: 50px;
+            width: 250px;
+            animation: float2 5s ease-in-out infinite;
+        }
+
+        .floating-card-3 {
+            top: 200px;
+            right: 350px;
+            width: 200px;
+            animation: float3 7s ease-in-out infinite;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(-2deg); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(3deg); }
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary), var(--purple));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        .card-title {
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .card-text {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+        }
+
+        /* About Section - Magazine Style */
+        .about-section {
+            background: var(--light);
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(78, 205, 196, 0.1);
+            border-radius: 50px;
+            color: var(--secondary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+        }
+
+        .about-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .why-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .why-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .why-icon {
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .why-content h5 {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .why-content p {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Services Section - Card Grid */
+        .services-section {
+            background: var(--dark);
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .services-section .section-title {
+            color: white;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 40px;
+            height: 100%;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1) 0%, rgba(157, 78, 221, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(78, 205, 196, 0.5);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+
+        .service-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 5rem;
+            font-weight: 800;
+            color: rgba(255,255,255,0.03);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .service-icon-box {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--secondary), var(--purple));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-features li {
+            padding: 10px 0;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .service-features li::before {
+            content: '→';
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            background: var(--light);
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, var(--dark-blue), var(--purple));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.2) 0%, rgba(157, 78, 221, 0.2) 100%);
+        }
+
+        .project-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.95);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--dark);
+        }
+
+        .project-content {
+            padding: 35px;
+        }
+
+        .project-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .project-desc {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tech-badge {
+            padding: 6px 16px;
+            background: rgba(78, 205, 196, 0.1);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            gap: 15px;
+            color: var(--purple);
+        }
+
+        .project-icon-large {
+            font-size: 6rem;
+            color: rgba(255,255,255,0.2);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background: var(--dark);
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 45px;
+            height: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 8rem;
+            color: rgba(78, 205, 196, 0.1);
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: scale(1.02);
+        }
+
+        .testimonial-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 30px;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--secondary), var(--purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .author-info h5 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            top: -250px;
+            left: -250px;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .cta-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .cta-section p {
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 80px 0 40px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-title {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* Scroll to top */
+        #scrollTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-size: 1.2rem;
+        }
+
+        #scrollTop:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.5);
+        }
+
+        #scrollTop.show {
+            display: flex;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .floating-card {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .btn-hero {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .service-card,
+            .project-card,
+            .testimonial-card {
+                margin-bottom: 30px;
+            }
+
+            .nav-link {
+                margin: 0.5rem 0;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
     </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">DaraCo</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <div class="boxed_wrapper ltr">
-
-        <!-- main header -->
-        <header class="main-header">
-            <!-- header-lower -->
-            <div class="header-lower">
-                <div class="outer-container p_relative pl_70 pr_70">
-                    <div class="outer-box">
-                        <div class="left-column">
-                            <figure class="logo-box"><a href="index.html">
-                                <img style="height: 80px; width: 100%; object-fit: contain;" src="assets/dara_logo.png" alt="DaraCo Technologies">
-                            </a></figure>
-                            <div class="menu-area">
-                                <!--Mobile Navigation Toggler-->
-                                <div class="mobile-nav-toggler">
-                                    <i class="icon-bar"></i>
-                                    <i class="icon-bar"></i>
-                                    <i class="icon-bar"></i>
-                                </div>
-                                <nav class="main-menu navbar-expand-md navbar-light clearfix">
-                                    <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
-                                        <ul class="navigation clearfix">
-                                            <li class="current"><a href="index.html">Home</a></li> 
-                                            <li><a href="#about">About Us</a></li> 
-                                            <li><a href="#services">Our Services</a></li> 
-                                            <li><a href="#contact">Contact</a></li> 
-                                        </ul>
-                                    </div>
-                                </nav>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-grid"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <span class="hero-label">🚀 Innovation Meets Excellence</span>
+                    <h1>
+                        YOUR TRUSTED
+                        <span class="gradient-text">TECHNOLOGY PARTNER</span>
+                    </h1>
+                    <p class="hero-subtitle">We bring your ideas to life with cutting-edge software solutions, seamless project management, and ongoing support that grows with you.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#services" class="btn-hero btn-primary-hero">Explore Our Services</a>
+                        <a href="#contact" class="btn-hero btn-outline-hero">Free Consultation</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="hero-visual">
+                        <div class="floating-card floating-card-1">
+                            <div class="card-icon">
+                                <i class="fas fa-code"></i>
                             </div>
+                            <div class="card-title">Clean Code</div>
+                            <div class="card-text">Industry best practices</div>
                         </div>
-                        <div class="menu-right-content">
-                            <div class="support-box"><a href="tel:+2347072648708"><i class="icon-1"></i> <span>+2347072648708</span></a></div>
-                            <div class="btn-box"><a href="#contact" class="theme-btn btn-one"><span class="text">Contact Us</span></a></div>
+                        <div class="floating-card floating-card-2">
+                            <div class="card-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="card-title">Fast Delivery</div>
+                            <div class="card-text">On time, every time</div>
+                        </div>
+                        <div class="floating-card floating-card-3">
+                            <div class="card-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="card-title">Secure</div>
+                            <div class="card-text">Bank-level security</div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!--sticky Header-->
-            <div class="sticky-header">
-                <div class="outer-container p_relative pl_70 pr_70">
-                    <div class="outer-box">
-                        <div class="left-column">
-                            <figure class="logo-box"><a href="index.html">
-                                <img style="height: 80px; width: 100%; object-fit: contain;" src="assets/dara_logo.png" alt="DaraCo Technologies">
-                            </a></figure>
-                            <div class="menu-area">
-                                <nav class="main-menu clearfix">
-                                    <!--Keep This Empty / Menu will come through Javascript-->
-                                </nav>
-                            </div>
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <span class="section-label">Who We Are</span>
+                    <h2 class="section-title">Tech That Works for You. Not the Other Way Around.</h2>
+                    <p class="about-text">At DaraCo Technologies, we believe great technology doesn't start with code — it starts with people. That's why we lead with empathy and strategy before ever writing a single line of software.</p>
+                    <p class="about-text">Founded by passionate problem-solvers, we've helped startups, SMEs, and growing enterprises turn complex digital challenges into clear, achievable roadmaps. From product launches to legacy system revamps, we bring the perfect mix of creativity, process, and technical know-how.</p>
+                    <p class="about-text">With a focus on people, not just platforms, we help businesses — big or small — run smarter and scale faster. Our team isn't just here to build — we're here to understand, guide, and grow with you.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="mb-4 fw-bold" style="color: var(--dark);">Why DaraCo?</h4>
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="fas fa-users"></i>
                         </div>
-                        <div class="menu-right-content">
-                            <div class="support-box"><a href="tel:+2347072648708"><i class="icon-1"></i> <span>+2347072648708</span></a></div>
-                            <div class="btn-box"><a href="#contact" class="theme-btn btn-one"><span class="text">Contact Us</span></a></div>
+                        <div class="why-content">
+                            <h5>Human-first approach to tech</h5>
+                            <p>We prioritize understanding your needs before diving into code</p>
+                        </div>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="why-content">
+                            <h5>Fast, reliable, and scalable solutions</h5>
+                            <p>Built to grow with your business and adapt to change</p>
+                        </div>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="why-content">
+                            <h5>Deep focus on business goals</h5>
+                            <p>Technology aligned with your strategic objectives</p>
+                        </div>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="why-content">
+                            <h5>Transparent communication & collaboration</h5>
+                            <p>Always in the loop, always in sync with your vision</p>
+                        </div>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div class="why-content">
+                            <h5>Post-launch support you can count on</h5>
+                            <p>We're with you long after deployment</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </header>
-        <!-- main-header end -->
+        </div>
+    </section>
 
-        <!-- Mobile Menu  -->
-        <div class="mobile-menu">
-            <div class="menu-backdrop"></div>
-            <div class="close-btn"><i class="fas fa-times"></i></div>
-            <nav class="menu-box">
-                <div class="nav-logo"><a href="index.html">
-                    <img style="height: 80px; width: 80%; object-fit: contain; border-radius: 100%;" src="assets/dara_logo.png" alt="DaraCo Technologies">
-                
-                </a></div>
-                <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
-                <div class="contact-info">
-                    <h4>Contact Info</h4>
-                    <ul>
-                        <li>Lagos, Nigeria | Available Globally</li>
-                        <li><a href="tel:+2347072648708">+2347072648708</a></li>
-                        <li><a href="mailto:hello@daracotech.com">hello@daracotech.com</a></li>
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-label" style="background: rgba(78, 205, 196, 0.1); color: var(--secondary);">What We Offer</span>
+                <h2 class="section-title text-white">Our Services</h2>
+                <p class="text-white-50 fs-5">Built for your growth. Backed by experience.</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="service-card">
+                        <span class="service-number">01</span>
+                        <div class="service-icon-box">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h4>Project & Product Management</h4>
+                        <p>Got a brilliant idea but unsure how to get it live? We'll help you define the "what", "why", and "how" of your product. From MVPs to scale-ready platforms.</p>
+                        <ul class="service-features">
+                            <li>MVP Planning</li>
+                            <li>Agile Delivery & Sprints</li>
+                            <li>Roadmapping & Prioritization</li>
+                            <li>Cross-functional Team Leadership</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="service-card">
+                        <span class="service-number">02</span>
+                        <div class="service-icon-box">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4>Web Application Development</h4>
+                        <p>We create sleek, responsive, and high-performing web applications tailored to your business needs. No templates, no shortcuts.</p>
+                        <ul class="service-features">
+                            <li>Custom Web App Builds</li>
+                            <li>Frontend & Backend Development</li>
+                            <li>Progressive Web Apps (PWAs)</li>
+                            <li>CMS & Admin Panel Creation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="service-card">
+                        <span class="service-number">03</span>
+                        <div class="service-icon-box">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h4>API Integrations</h4>
+                        <p>We design, build, and maintain API integrations that keep your systems talking securely and efficiently.</p>
+                        <ul class="service-features">
+                            <li>Third-party Service Integrations</li>
+                            <li>Custom API Development</li>
+                            <li>Real-time Data Sync</li>
+                            <li>Webhooks & Automation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="service-card">
+                        <span class="service-number">04</span>
+                        <div class="service-icon-box">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h4>IT Support & Maintenance</h4>
+                        <p>Round-the-clock support, bug fixes, system checks, and feature updates to keep your tech in top shape.</p>
+                        <ul class="service-features">
+                            <li>SLA-backed Support</li>
+                            <li>Performance Monitoring</li>
+                            <li>Security Patching & Updates</li>
+                            <li>Troubleshooting & Optimization</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="service-card">
+                        <span class="service-number">05</span>
+                        <div class="service-icon-box">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>Software Consulting</h4>
+                        <p>Honest, experienced advice on how to build or improve your digital products. Insights that actually matter.</p>
+                        <ul class="service-features">
+                            <li>Tech Stack Advisory</li>
+                            <li>Vendor Evaluation</li>
+                            <li>Digital Strategy Sessions</li>
+                            <li>Cost-Benefit Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-label">Our Work</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="text-muted fs-5">Real solutions. Real impact. Real results.</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-heartbeat project-icon-large"></i>
+                            <span class="project-tag">HealthTech</span>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">MediConnect Platform</h3>
+                            <p class="project-desc">A comprehensive telemedicine platform connecting patients with healthcare providers. Features include video consultations, e-prescriptions, and AI-powered symptom checker.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">React</span>
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">WebRTC</span>
+                                <span class="tech-badge">MongoDB</span>
+                            </div>
+                            <a href="#" class="project-link">
+                                View Case Study <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-wallet project-icon-large"></i>
+                            <span class="project-tag">FinTech</span>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">PayFlow Solutions</h3>
+                            <p class="project-desc">Mobile-first payment gateway with multi-currency support, fraud detection, and real-time transaction tracking. Processed over $50M in transactions.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Flutter</span>
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">PostgreSQL</span>
+                                <span class="tech-badge">AWS</span>
+                            </div>
+                            <a href="#" class="project-link">
+                                View Case Study <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-shopping-cart project-icon-large"></i>
+                            <span class="project-tag">E-Commerce</span>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">AfroMarket Hub</h3>
+                            <p class="project-desc">Pan-African e-commerce marketplace with integrated logistics, vendor management, and mobile money integration. Supporting 10,000+ vendors.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Vue.js</span>
+                                <span class="tech-badge">Laravel</span>
+                                <span class="tech-badge">Redis</span>
+                                <span class="tech-badge">Docker</span>
+                            </div>
+                            <a href="#" class="project-link">
+                                View Case Study <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-graduation-cap project-icon-large"></i>
+                            <span class="project-tag">EdTech</span>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">LearnSphere Academy</h3>
+                            <p class="project-desc">Interactive learning management system with live classes, gamification, progress tracking, and AI-powered personalized learning paths.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Next.js</span>
+                                <span class="tech-badge">Django</span>
+                                <span class="tech-badge">TensorFlow</span>
+                                <span class="tech-badge">Kubernetes</span>
+                            </div>
+                            <a href="#" class="project-link">
+                                View Case Study <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-label" style="background: rgba(78, 205, 196, 0.1); color: var(--secondary);">Client Stories</span>
+                <h2 class="section-title text-white">What Our Clients Say</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">DaraCo felt more like a partner than a vendor. They truly cared about our product and users. The attention to detail was exceptional.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">JM</div>
+                            <div class="author-info">
+                                <h5>Jessica Martinez</h5>
+                                <p>CEO, HealthTech Startup</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">Their team made a complicated project feel simple. We launched on time, on budget, and with confidence. Couldn't ask for more.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">EA</div>
+                            <div class="author-info">
+                                <h5>Emeka Adebayo</h5>
+                                <p>Founder, Fintech Platform</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">From strategy to execution, DaraCo delivered 110%. Highly recommended for anyone serious about digital transformation.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">ST</div>
+                            <div class="author-info">
+                                <h5>Sarah Thompson</h5>
+                                <p>E-commerce Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2>Let's Create Something Brilliant Together</h2>
+            <p>Have a project idea? Need technical support? Or just want to chat about the future of tech? We're all ears — and keyboards.</p>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <a href="mailto:hello@daracotech.com" class="btn-hero" style="background: white; color: var(--dark);">Book a Free Discovery Call</a>
+                <a href="mailto:hello@daracotech.com" class="btn-hero" style="background: transparent; border: 2px solid white; color: white;">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">DaraCo</div>
+                    <p style="color: rgba(255,255,255,0.6);">Your trusted partner in digital transformation. We build software that makes a difference.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                <div class="social-links">
-                    <ul class="clearfix">
-                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                        <li><a href="#"><span class="fab fa-linkedin"></span></a></li>
-                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="#services">Project Management</a></li>
+                        <li><a href="#services">Web Development</a></li>
+                        <li><a href="#services">API Integration</a></li>
+                        <li><a href="#services">IT Support</a></li>
+                        <li><a href="#services">Consulting</a></li>
                     </ul>
                 </div>
-            </nav>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">Contact Us</h5>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope me-2"></i> hello@daracotech.com</li>
+                        <li><i class="fas fa-phone me-2"></i> +234 XXX XXX XXXX</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Lagos, Nigeria</li>
+                        <li><i class="fas fa-globe me-2"></i> Available Globally</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 DaraCo Technologies. All rights reserved. | Crafted with <i class="fas fa-heart" style="color: var(--primary);"></i> for innovators worldwide</p>
+            </div>
         </div>
-        <!-- End Mobile Menu -->
+    </footer>
 
-        <!-- banner-section -->
-        <section class="banner-section p_relative" id="home">
-            <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-1.png);"></div>
-            <div class="banner-carousel owl-theme owl-carousel owl-dots-none nav-style-one">
-                <div class="slide-item p_relative">
-                    <div class="bg-layer" style="background-image: url(assets/images/banner/banner-1.jpg);"></div>
-                    <div class="auto-container">
-                        <div class="content-box">
-                            <span class="upper-text gradient-color">YOUR TRUSTED TECHNOLOGY PARTNER</span>
-                            <h2>We Bring Your Ideas to Life</h2>
-                            <p>At DaraCo Technologies, we deliver cutting-edge software solutions, seamless project management, and ongoing support that grows with you.</p>
-                            <div class="btn-box">
-                                <a href="#services" class="theme-btn btn-one"><span class="text">Explore Our Services</span><i class="icon-3"></i></a>
-                                <!-- <a href="#contact" class="theme-btn btn-one" style="margin-left: 15px;"><span class="text">Free Consultation</span><i class="icon-3"></i></a> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- banner-section end -->
+    <!-- Scroll to Top -->
+    <button id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-        <!-- feature-section -->
-        <section class="feature-section centred pt_140">
-            <div class="auto-container">
-                <div class="sec-title mb_50">
-                    <span class="sub-title gradient-color">Why Choose DaraCo?</span>
-                    <h2>Built for your growth.<br />Backed by experience.</h2>
-                </div>
-                <div class="row clearfix">
-                    <div class="col-lg-3 col-md-6 col-sm-12 feature-block">
-                        <div class="feature-block-one wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
-                            <div class="inner-box">
-                                <figure class="image-box"><img src="assets/images/resource/feature-1.jpg" alt=""></figure>
-                                <div class="lower-content">
-                                    <h3><a href="#services">Human-First Approach</a></h3>
-                                    <p>We put people before platforms, understanding your needs first.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 feature-block">
-                        <div class="feature-block-one wow fadeInUp animated" data-wow-delay="200ms" data-wow-duration="1500ms">
-                            <div class="inner-box">
-                                <figure class="image-box"><img src="assets/images/resource/feature-2.jpg" alt=""></figure>
-                                <div class="lower-content">
-                                    <h3><a href="#services">Fast & Scalable Solutions</a></h3>
-                                    <p>Reliable technology that grows with your business needs.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 feature-block">
-                        <div class="feature-block-one wow fadeInUp animated" data-wow-delay="400ms" data-wow-duration="1500ms">
-                            <div class="inner-box">
-                                <figure class="image-box"><img src="assets/images/resource/feature-3.jpg" alt=""></figure>
-                                <div class="lower-content">
-                                    <h3><a href="#services">Business-Focused</a></h3>
-                                    <p>Deep focus on your business goals and measurable outcomes.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 feature-block">
-                        <div class="feature-block-one wow fadeInUp animated" data-wow-delay="600ms" data-wow-duration="1500ms">
-                            <div class="inner-box">
-                                <figure class="image-box"><img src="assets/images/resource/feature-4.jpg" alt=""></figure>
-                                <div class="lower-content">
-                                    <h3><a href="#services">Post-Launch Support</a></h3>
-                                    <p>Ongoing support you can count on, long after deployment.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- feature-section end -->
-
-        <!-- about-section -->
-        <section class="about-section pt_120 pb_150" id="about">
-            <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-4.png);"></div>
-            <div class="auto-container">
-                <div class="row clearfix">
-                    <div class="col-lg-6 col-md-12 col-sm-12 content-column">
-                        <div class="content_block_one">
-                            <div class="content-box mr_100">
-                                <div class="sec-title mb_45">
-                                    <span class="sub-title gradient-color">About Us</span>
-                                    <h2>Tech That Works for You. Not the Other Way Around.</h2>
-                                </div>
-                                <div class="text-box">
-                                    <p>At DaraCo Technologies, we believe great technology doesn't start with code — it starts with people. That's why we lead with empathy and strategy before ever writing a single line of software.</p>
-                                    <p>Founded by passionate problem-solvers, we've helped startups, SMEs, and growing enterprises turn complex digital challenges into clear, achievable roadmaps. From product launches to legacy system revamps, we bring the perfect mix of creativity, process, and technical know-how.</p>
-                                </div>
-                                <div class="inner-box block-shadow mb_45">
-                                    <h3>What Sets Us Apart</h3>
-                                    <div class="list-inner">
-                                        <ul class="list-style-one clearfix">
-                                            <li>Human-first approach to tech</li>
-                                            <li>Fast, reliable & scalable</li>
-                                        </ul>
-                                        <ul class="list-style-one clearfix">
-                                            <li>Transparent communication</li>
-                                            <li>Post-launch support</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="btn-box">
-                                    <a href="#services" class="theme-btn btn-one"><span class="text">Learn More</span><i class="icon-3"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12 image-column">
-                        <div class="image_block_one">
-                            <div class="image-box pl_170">
-                                <div class="image-shape">
-                                    <div class="shape-1 zoom-fade" style="background-image: url(assets/images/shape/shape-2.png);"></div>
-                                    <div class="shape-2" style="background-image: url(assets/images/shape/shape-3.png);"></div>
-                                </div>
-                                <figure class="image image-1"><img src="assets/images/resource/about-1.jpg" alt=""></figure>
-                                <figure class="image image-2"><img src="assets/images/resource/about-2.jpg" alt=""></figure>
-                                <div class="experience-box block-shadow">
-                                    <h3><span class="gradient-color">People,</span> Not Just Platforms</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- about-section end -->
-
-        <!-- service-section -->
-        <section class="service-section pt_140 pb_120 bg-color-1" id="services">
-            <div class="auto-container">
-                <div class="sec-title centred light mb_50">
-                    <span class="sub-title gradient-color">Our Services</span>
-                    <h2>Built for your growth.<br />Backed by experience.</h2>
-                </div>
-                <div class="row clearfix">
-                    <div class="col-lg-4 col-md-6 col-sm-12 service-block">
-                        <div class="service-block-one pr_5 pb_5">
-                            <div class="inner-box">
-                                <div class="count-text"><span class="gradient-color">1</span></div>
-                                <h3><a href="#services">Project & Product Management</a></h3>
-                                <p>From MVPs to scale-ready platforms, we use Agile frameworks and crystal-clear communication. MVP Planning, Agile Delivery, Roadmapping & Cross-functional Leadership.</p>
-                                <div class="link-box"><a href="#contact" class="gradient-color"><i class="icon-3"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 service-block">
-                        <div class="service-block-one pr_5 pb_5">
-                            <div class="inner-box">
-                                <div class="count-text"><span class="gradient-color">2</span></div>
-                                <h3><a href="#services">Web Application Development</a></h3>
-                                <p>Sleek, responsive, high-performing web applications tailored to your needs. Custom builds, Frontend & Backend, PWAs, and CMS & Admin Panel Creation.</p>
-                                <div class="link-box"><a href="#contact" class="gradient-color"><i class="icon-3"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 service-block">
-                        <div class="service-block-one pr_5 pb_5">
-                            <div class="inner-box">
-                                <div class="count-text"><span class="gradient-color">3</span></div>
-                                <h3><a href="#services">API Integrations</a></h3>
-                                <p>Keep your systems talking securely and efficiently. Third-party integrations, Custom API Development, Real-time Data Sync, and Webhooks & Automation.</p>
-                                <div class="link-box"><a href="#contact" class="gradient-color"><i class="icon-3"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 service-block">
-                        <div class="service-block-one pr_5 pb_5">
-                            <div class="inner-box">
-                                <div class="count-text"><span class="gradient-color">4</span></div>
-                                <h3><a href="#services">IT Support & Maintenance</a></h3>
-                                <p>Round-the-clock support, bug fixes, and updates. SLA-backed Support, Performance Monitoring, Security Patching, and Troubleshooting & Optimization.</p>
-                                <div class="link-box"><a href="#contact" class="gradient-color"><i class="icon-3"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 service-block">
-                        <div class="service-block-one pr_5 pb_5">
-                            <div class="inner-box">
-                                <div class="count-text"><span class="gradient-color">5</span></div>
-                                <h3><a href="#services">Software Consulting</a></h3>
-                                <p>Honest, experienced advice on building or improving your digital products. Tech Stack Advisory, Vendor Evaluation, Digital Strategy, and Cost-Benefit Analysis.</p>
-                                <div class="link-box"><a href="#contact" class="gradient-color"><i class="icon-3"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 service-block">
-                        <div class="service-block-one pr_5 pb_5">
-                            <div class="inner-box">
-                                <div class="count-text"><span class="gradient-color">6</span></div>
-                                <h3><a href="#services">Digital Strategy</a></h3>
-                                <p>Clear roadmaps and actionable insights that drive real business results. From ideation to execution, we guide you every step of the way.</p>
-                                <div class="link-box"><a href="#contact" class="gradient-color"><i class="icon-3"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- service-section end -->
-
-        <div class="slide-text-outer p_relative pb_80 pt_60">
-            <ul class="text-box">
-                <li>Project Management</li>
-                <li>Web Development</li>
-                <li>API Integration</li>
-                <li>IT Support</li>
-                <li>Software Consulting</li>
-                <li>Digital Strategy</li>
-                <li>Project Management</li>
-                <li>Web Development</li>
-                <li>API Integration</li>
-                <li>IT Support</li>
-                <li>Software Consulting</li>
-                <li>Digital Strategy</li>
-            </ul>
-        </div>
-
-        <!-- process-section -->
-        <section class="process-section pt_140 pb_140">
-            <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-4.png);"></div>
-            <div class="auto-container">
-                <div class="row clearfix">
-                    <div class="col-lg-6 col-md-12 col-sm-12 title-column">
-                        <div class="sec-title mr_70">
-                            <span class="sub-title gradient-color">Our Process</span>
-                            <h2>How we work with you</h2>
-                            <p class="mt_40">With a focus on people, not just platforms, we help businesses — big or small — run smarter and scale faster. Our team isn't just here to build — we're here to understand, guide, and grow with you.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12 content-column">
-                        <div class="content_block_two">
-                            <div class="content-box ml_40">
-                                <ul class="accordion-box">
-                                    <li class="accordion block active-block block-shadow">
-                                        <div class="acc-btn active">
-                                            <figure class="image-box"><img src="assets/images/resource/process-1.jpg" alt=""></figure>
-                                            <div class="title-box">
-                                                <span class="count-text">1</span>
-                                                <h3>Discovery & Planning</h3>
-                                                <p>We start by understanding your vision, goals, and challenges to create a clear roadmap.</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="accordion block block-shadow">
-                                        <div class="acc-btn">
-                                            <figure class="image-box"><img src="assets/images/resource/process-1.jpg" alt=""></figure>
-                                            <div class="title-box">
-                                                <span class="count-text">2</span>
-                                                <h3>Design & Development</h3>
-                                                <p>Our team builds scalable, user-friendly solutions using the latest technologies.</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="accordion block block-shadow">
-                                        <div class="acc-btn">
-                                            <figure class="image-box"><img src="assets/images/resource/process-1.jpg" alt=""></figure>
-                                            <div class="title-box">
-                                                <span class="count-text">3</span>
-                                                <h3>Launch & Support</h3>
-                                                <p>We deploy, monitor, and maintain your solution with ongoing support and updates.</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- process-section end -->
-
-        <!-- funfact-section -->
-        <section class="funfact-section pb_110 centred">
-            <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-2.png);"></div>
-            <div class="auto-container">
-                <div class="inner-container">
-                    <div class="funfact-block-one">
-                        <div class="inner-box">
-                            <div class="count-outer">
-                                <span class="odometer" data-count="50">00</span><span class="symble">+</span>
-                            </div>
-                            <h4>Projects <br />Delivered</h4>
-                        </div>
-                    </div>
-                    <div class="funfact-block-one">
-                        <div class="inner-box">
-                            <div class="count-outer">
-                                <span class="odometer" data-count="5">00</span><span class="symble">+</span>
-                            </div>
-                            <h4>Years <br />Experience</h4>
-                        </div>
-                    </div>
-                    <div class="funfact-block-one">
-                        <div class="inner-box">
-                            <div class="count-outer">
-                                <span class="odometer" data-count="100">00</span><span class="symble">%</span>
-                            </div>
-                            <h4>Client <br />Satisfaction</h4>
-                        </div>
-                    </div>
-                    <div class="funfact-block-one">
-                        <div class="inner-box">
-                            <div class="count-outer">
-                                <span class="odometer" data-count="24">00</span><span class="symble">/7</span>
-                            </div>
-                            <h4>Support <br />Available</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- funfact-section end -->
-
-        <!-- testimonial-section -->
-        <section class="testimonial-section pt_150 pb_150">
-            <div class="pattern-layer">
-                <div class="pattern-1" style="background-image: url(assets/images/shape/shape-4.png);"></div>
-                <div class="pattern-2 zoom-fade" style="background-image: url(assets/images/shape/shape-5.png);"></div>
-            </div>
-            <div class="auto-container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-12 col-sm-12 image-column">
-                        <div class="image-box mr_40">
-                            <figure class="image"><img src="assets/images/resource/testimonial-1.jpg" alt=""></figure>
-                            <div class="icon-box"><div class="icon gradient-color"><i class="icon-7"></i></div></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12 content-column">
-                        <div class="content-box ml_40">
-                            <div class="sec-title mb_50">
-                                <span class="sub-title gradient-color">Testimonials</span>
-                                <h2>What Our Clients Say</h2>
-                            </div>
-                            <div class="single-item-carousel owl-carousel owl-theme owl-dots-none nav-style-one">
-                                <div class="testimonial-content">
-                                    <ul class="rating">
-                                        <li><i class="icon-32"></i></li>
-                                        <li><i class="icon-32"></i></li>
-                                        <li><i class="icon-32"></i></li>
-                                        <li><i class="icon-32"></i></li>
-                                        <li><i class="icon-32"></i></li>
-                                    </ul>
-                                    <p>"DaraCo felt more like a partner than a vendor. They truly cared about our product and users. The level of attention and expertise was exceptional."</p>
-                                    <div class="author-box">
-                                        <figure class="thumb-box"><img src="assets/images/resource/testimonial-1.png" alt=""></figure>
-                                        <div class="inner">
-                                            <h3>Jessica M.</h3>
-                                            <span class="destination">HealthTech Startup</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="testimonial-content">
-                                    <ul class="rating">
-                                        <li><i class="icon-32"></i></li>
-                                        <li><i class="icon-32"></i></li>
-                                        <li><i class="icon-32"></i></li>
-                                        <li><i class="icon-32"></i></li>
-                                        <li><i class="icon-32"></i></li>
-                                    </ul>
-                                    <p>"Their team made a complicated project feel simple. We launched on time, on budget, and with confidence. Couldn't ask for more."</p>
-                                    <div class="author-box">
-                                        <figure class="thumb-box"><img src="assets/images/resource/testimonial-2.png" alt=""></figure>
-                                        <div class="inner">
-                                            <h3>Emeka A.</h3>
-                                            <span class="destination">Fintech Founder</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="testimonial-content">
-                                    <ul class="rating">
-                                        <li><i class="icon-32"></i></li>
-                                        <li><i class="icon-32"></i></li>
-                                        <li><i class="icon-32"></i></li>
-                                        <li><i class="icon-32"></i></li>
-                                        <li><i class="icon-32"></i></li>
-                                    </ul>
-                                    <p>"From strategy to execution, DaraCo delivered 110%. Their support didn't end at launch—they're still with us every step of the way. Highly recommended."</p>
-                                    <div class="author-box">
-                                        <figure class="thumb-box"><img src="assets/images/resource/testimonial-3.png" alt=""></figure>
-                                        <div class="inner">
-                                            <h3>Sarah T.</h3>
-                                            <span class="destination">E-commerce Manager</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- testimonial-section end -->
-
-        <!-- brand-section / Portfolio -->
-        <section class="brand-section">
-            <div class="auto-container">
-                <div class="sec-title centred mb_50">
-                    <span class="sub-title gradient-color">Our Portfolio</span>
-                    <h2>Recent Projects We're Proud Of</h2>
-                </div>
-                <div class="five-item-carousel owl-carousel owl-theme owl-nav-none owl-dots-none">
-                    <figure class="brand-logo"><a href="https://odumaretech.com/" target="_blank"><img src="assets/images/brand/brand-1.png" alt="Odumare Tech"></a></figure>
-                    <figure class="brand-logo"><a href="https://thehpcatalyst.com/" target="_blank"><img src="assets/images/brand/brand-2.png" alt="The HP Catalyst"></a></figure>
-                    <figure class="brand-logo"><a href="https://21stcenturyrealestate.com.ng/" target="_blank"><img src="assets/images/brand/brand-3.png" alt="21st Century Real Estate"></a></figure>
-                    <figure class="brand-logo"><a href="https://ginellafarms.com.ng/" target="_blank"><img src="assets/images/brand/brand-4.png" alt="Ginella Farms"></a></figure>
-                    <figure class="brand-logo"><a href="#contact"><img src="assets/images/brand/brand-5.png" alt="Your Project"></a></figure>
-                </div>
-            </div>
-        </section>
-        <!-- brand-section end -->
-
-        <!-- project-section -->
-        <section class="project-section pt_140 pb_140">
-            <div class="pattern-layer zoom-fade" style="background-image: url(assets/images/shape/shape-5.png);"></div>
-            <div class="auto-container">
-                <div class="sec-title centred mb_50">
-                    <span class="sub-title gradient-color">Featured Work</span>
-                    <h2>Explore Our Best Recently <br />Completed Projects</h2>
-                </div>
-                <div class="inner-container">
-                    <div class="row clearfix">
-                        <div class="col-lg-4 col-md-6 col-sm-12 project-block">
-                            <div class="project-block-one">
-                                <div class="inner-box">
-                                    <div class="static-content p_relative">
-                                        <figure class="image-box"><img src="assets/images/project/project-6.jpg" alt=""></figure>
-                                        <div class="text-box">
-                                            <h3><a href="https://odumaretech.com/" target="_blank">Odumare Tech</a></h3>
-                                        </div>
-                                    </div>
-                                    <div class="overlay-content p_absolute l_0 t_0">
-                                        <div class="image-box" style="background-image: url(assets/images/project/project-1.jpg);"></div>
-                                        <div class="text-box">
-                                            <h3><a href="https://odumaretech.com/" target="_blank">Full-Stack Web Platform for Tech Solutions</a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 project-block">
-                            <div class="project-block-one">
-                                <div class="inner-box">
-                                    <div class="static-content p_relative">
-                                        <figure class="image-box"><img src="assets/images/project/project-7.jpg" alt=""></figure>
-                                        <div class="text-box">
-                                            <h3><a href="https://thehpcatalyst.com/" target="_blank">The HP Catalyst</a></h3>
-                                        </div>
-                                    </div>
-                                    <div class="overlay-content p_absolute l_0 t_0">
-                                        <div class="image-box" style="background-image: url(assets/images/project/project-2.jpg);"></div>
-                                        <div class="text-box">
-                                            <h3><a href="https://thehpcatalyst.com/" target="_blank">Business Consulting & Advisory Platform</a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 project-block">
-                            <div class="project-block-one">
-                                <div class="inner-box">
-                                    <div class="static-content p_relative">
-                                        <figure class="image-box"><img src="assets/images/project/project-8.jpg" alt=""></figure>
-                                        <div class="text-box">
-                                            <h3><a href="https://21stcenturyrealestate.com.ng/" target="_blank">21st Century Real Estate</a></h3>
-                                        </div>
-                                    </div>
-                                    <div class="overlay-content p_absolute l_0 t_0">
-                                        <div class="image-box" style="background-image: url(assets/images/project/project-3.jpg);"></div>
-                                        <div class="text-box">
-                                            <h3><a href="https://21stcenturyrealestate.com.ng/" target="_blank">Real Estate Management System with CRM</a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 project-block">
-                            <div class="project-block-one">
-                                <div class="inner-box">
-                                    <div class="static-content p_relative">
-                                        <figure class="image-box"><img src="assets/images/project/project-9.jpg" alt=""></figure>
-                                        <div class="text-box">
-                                            <h3><a href="https://ginellafarms.com.ng/" target="_blank">Ginella Farms</a></h3>
-                                        </div>
-                                    </div>
-                                    <div class="overlay-content p_absolute l_0 t_0">
-                                        <div class="image-box" style="background-image: url(assets/images/project/project-4.jpg);"></div>
-                                        <div class="text-box">
-                                            <h3><a href="https://ginellafarms.com.ng/" target="_blank">E-commerce Platform for Agricultural Products</a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 project-block">
-                            <div class="project-block-one">
-                                <div class="inner-box">
-                                    <div class="static-content p_relative">
-                                        <figure class="image-box"><img src="assets/images/project/project-10.jpg" alt=""></figure>
-                                        <div class="text-box">
-                                            <h3><a href="#contact">Custom API Integration</a></h3>
-                                        </div>
-                                    </div>
-                                    <div class="overlay-content p_absolute l_0 t_0">
-                                        <div class="image-box" style="background-image: url(assets/images/project/project-5.jpg);"></div>
-                                        <div class="text-box">
-                                            <h3><a href="#contact">Seamless Third-Party System Integrations</a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 project-block">
-                            <div class="project-block-one">
-                                <div class="inner-box">
-                                    <div class="static-content p_relative">
-                                        <figure class="image-box"><img src="assets/images/project/project-11.jpg" alt=""></figure>
-                                        <div class="text-box">
-                                            <h3><a href="#contact">Your Project Here</a></h3>
-                                        </div>
-                                    </div>
-                                    <div class="overlay-content p_absolute r_0 t_0">
-                                        <div class="image-box" style="background-image: url(assets/images/project/project-12.jpg);"></div>
-                                        <div class="text-box">
-                                            <h3><a href="#contact">Let's Build Something Amazing Together</a></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="more-text centred pt_40">
-                        <h3><a href="#contact"><span class="gradient-color">Start Your Project Today</span><i class="icon-3 gradient-color"></i></a></h3>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- project-section end -->
-
-        <!-- contact-section -->
-        <section class="contact-section pt_150 pb_150" id="contact">
-            <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-4.png);"></div>
-            <div class="auto-container">
-                <div class="row clearfix">
-                    <div class="col-lg-6 col-md-12 col-sm-12 content-column">
-                        <div class="content-box mr_70">
-                            <div class="text-box mb_35">
-                                <h2>Let's Create Something Brilliant Together</h2>
-                                <p>Have a project idea? Need technical support? Or just want to chat about the future of tech? We're all ears — and keyboards.</p>
-                            </div>
-                            <div class="info-box mb_50">
-                                <h3>Contact Info</h3>
-                                <ul class="info-list clearfix">
-                                    <li><i class="icon-41"></i><span>Lagos, Nigeria<br>Available Globally 🌍</span></li>
-                                    <li><i class="icon-42"></i><a href="tel:+2347072648708">+2347072648708</a></li>
-                                    <li><i class="icon-43"></i><a href="mailto:hello@daracotech.com">hello@daracotech.com</a></li>
-                                </ul>
-                            </div>
-                            <ul class="social-links">
-                                <li><a href="#"><i class="icon-22"></i></a></li>
-                                <li><a href="#"><i class="icon-23"></i></a></li>
-                                <li><a href="#"><i class="icon-24"></i></a></li>
-                                <li><a href="#"><i class="icon-25"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12 form-column">
-                        <div class="form-inner">
-                            <h3>Send A Message</h3>
-                            <form method="post" action="sendemail.php" id="contact-form">
-                                <div class="row clearfix">
-                                    <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                        <label>Name</label>
-                                        <input type="text" name="username" required>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                        <label>Email</label>
-                                        <input type="email" name="email" required>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                        <label>Phone</label>
-                                        <input type="text" name="phone" required>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                        <label>Subject</label>
-                                        <input type="text" name="subject" required>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                        <label>Message</label>
-                                        <textarea name="message"></textarea>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn pt_10">
-                                        <button type="submit" class="theme-btn btn-one" name="submit-form"><span class="text">Send Message</span><i class="icon-3"></i></button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- contact-section end -->
-
-        <!-- main-footer -->
-        <footer class="main-footer">
-            <div class="footer-top p_relative">
-                <div class="bg-color bg-color-1"></div>
-            </div>
-            <div class="main-footer-content p_relative bg-color-1">
-                <div class="widget-section p_relative pt_90 pb_90">
-                    <div class="auto-container">
-                        <div class="row clearfix">
-                            <div class="col-lg-6 col-md-12 col-sm-12 footer-column">
-                                <div class="footer-widget about-widget">
-                                    <div class="widget-content">
-                                        <h2>Ready to Start Working Together?</h2>
-                                        <a href="#contact" class="theme-btn btn-one"><span class="text">Book a Free Discovery Call</span><i class="icon-3"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                                <div class="footer-widget links-widget">
-                                    <div class="widget-title">
-                                        <h3>Quick Links</h3>
-                                    </div>
-                                    <div class="widget-content">
-                                        <ul class="links-list clearfix">
-                                            <li><a href="#home">Home</a></li>
-                                            <li><a href="#about">About</a></li>
-                                            <li><a href="#services">Services</a></li>
-                                            <li><a href="#contact">Contact</a></li>
-                                            <li><a href="#">Privacy Policy</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                                <div class="footer-widget contact-widget">
-                                    <div class="widget-title">
-                                        <h3>Get In Touch</h3>
-                                    </div>
-                                    <div class="widget-content">
-                                        <ul class="info-list mb_25">
-                                            <li><i class="icon-9"></i><span>Lagos, Nigeria<br>Available Globally 🌍</span></li>
-                                            <li><i class="icon-10"></i><span>Email: <a href="mailto:hello@daracotech.com">hello@daracotech.com</a></span></li>
-                                            <li><i class="icon-11"></i><span>Phone: <a href="tel:+2347072648708">+2347072648708</a></span></li>
-                                        </ul>
-                                        <ul class="social-links">
-                                            <li><a href="#"><i class="icon-12"></i></a></li>
-                                            <li><a href="#"><i class="icon-13"></i></a></li>
-                                            <li><a href="#"><i class="icon-14"></i></a></li>
-                                            <li><a href="#"><i class="icon-15"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <div class="auto-container">
-                        <div class="bottom-inner">
-                            <div class="copyright"><p>Copyright 2025 by <a href="index.html">DaraCo Technologies</a> All Rights Reserved.</p></div>
-                            <ul class="footer-menu">
-                                <li><a href="#home">Home</a></li>
-                                <li><a href="#about">About Us</a></li>
-                                <li><a href="#services">Services</a></li>
-                                <li><a href="#contact">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- main-footer end -->
-
-        <!--Scroll to top-->
-        <div class="scroll-to-top">
-            <svg class="scroll-top-inner" viewBox="-1 -1 102 102">
-                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-            </svg>
-        </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        const scrollTopBtn = document.getElementById('scrollTop');
         
-    </div>
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+                scrollTopBtn.classList.add('show');
+            } else {
+                navbar.classList.remove('scrolled');
+                scrollTopBtn.classList.remove('show');
+            }
+        });
 
-    <!-- jequery plugins -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/owl.js"></script>
-    <script src="assets/js/wow.js"></script>
-    <script src="assets/js/validation.js"></script>
-    <script src="assets/js/jquery.fancybox.js"></script>
-    <script src="assets/js/appear.js"></script>
-    <script src="assets/js/isotope.js"></script>
-    <script src="assets/js/parallax-scroll.js"></script>
-    <script src="assets/js/jquery.nice-select.min.js"></script>
-    <script src="assets/js/scrolltop.min.js"></script>
-    <script src="assets/js/jquery-ui.js"></script>
-    <script src="assets/js/odometer.js"></script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = navbar.offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
 
-    <!-- main-js -->
-    <script src="assets/js/script.js"></script>
+                    // Close mobile menu
+                    const navCollapse = document.querySelector('.navbar-collapse');
+                    if (navCollapse.classList.contains('show')) {
+                        const bsCollapse = new bootstrap.Collapse(navCollapse);
+                        bsCollapse.hide();
+                    }
+                }
+            });
+        });
 
+        // Scroll to top
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Active nav link
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= (sectionTop - navbar.offsetHeight - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+       
+        console.log('✨ DaraCo Technologies - Loaded Successfully!');
+    </script>
 </body>
 </html>
