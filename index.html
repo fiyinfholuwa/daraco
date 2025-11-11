@@ -122,6 +122,35 @@
             transform: translateX(-50%) scaleX(1);
         }
 
+        .navbar-toggler {
+            border: 2px solid var(--border-color);
+            padding: 8px 12px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.2rem rgba(255, 140, 66, 0.25);
+        }
+
+        .navbar-toggler-icon {
+            background-image: none;
+            width: 25px;
+            height: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar-toggler-icon::before {
+            content: '\f0c9';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+        }
+
         .theme-toggle {
             background: var(--bg-secondary);
             border: 2px solid var(--border-color);
@@ -710,10 +739,59 @@
 
         .project-image {
             width: 100%;
-            height: 280px;
-            background: linear-gradient(135deg, var(--primary), var(--green));
+            height: 320px;
             position: relative;
             overflow: hidden;
+            background: var(--bg-secondary);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .project-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none;
+            transform: scale(0.5);
+            transform-origin: 0 0;
+            width: 200%;
+            height: 200%;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.7) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .view-live-btn {
+            padding: 12px 30px;
+            background: white;
+            color: var(--dark);
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .view-live-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
         }
 
         .project-tag {
@@ -728,6 +806,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--primary);
+            z-index: 10;
         }
 
         .project-content {
@@ -777,15 +856,6 @@
         .project-link:hover {
             gap: 15px;
             color: var(--green);
-        }
-
-        .project-icon-large {
-            font-size: 6rem;
-            color: rgba(255,255,255,0.2);
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
         }
 
         /* Testimonials Section */
@@ -863,6 +933,141 @@
             color: var(--primary);
             font-size: 0.9rem;
             margin: 0;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--bg-primary);
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .contact-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+
+        .contact-info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-info-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: var(--bg-secondary);
+            padding: 25px;
+            border-radius: 16px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-card:hover {
+            transform: translateX(10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(255, 140, 66, 0.15);
+        }
+
+        .contact-info-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--green));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-info-content h5 {
+            color: var(--text-primary);
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .contact-info-content p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .contact-form-wrapper {
+            background: var(--bg-secondary);
+            padding: 50px;
+            border-radius: 24px;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        .contact-form .form-label {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .contact-input {
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-input:focus {
+            background: var(--bg-primary);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.2rem rgba(255, 140, 66, 0.15);
+            color: var(--text-primary);
+            outline: none;
+        }
+
+        .contact-input::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.6;
+        }
+
+        select.contact-input {
+            cursor: pointer;
+        }
+
+        textarea.contact-input {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(255, 140, 66, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 140, 66, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(-1px);
         }
 
         /* CTA Section */
@@ -1083,6 +1288,20 @@
             .why-daraco-grid {
                 grid-template-columns: 1fr;
             }
+
+            .project-iframe {
+                transform: scale(0.3);
+                width: 333%;
+                height: 333%;
+            }
+
+            .project-image {
+                height: 250px;
+            }
+
+            .navbar-toggler {
+                display: block;
+            }
         }
     </style>
 </head>
@@ -1091,7 +1310,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#"><img style="height: 60px; width: 100px; border-radius: 20px;" src="assets/dara_logo.png" alt="DaraCo Logo"/></a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -1334,20 +1553,25 @@
                 <div class="col-lg-6 mb-4">
                     <div class="project-card">
                         <div class="project-image">
-                            <i class="fas fa-heartbeat project-icon-large"></i>
-                            <span class="project-tag">HealthTech</span>
+                            <iframe class="project-iframe" src="https://21stcenturyrealestate.com.ng/" title="21st Century Real Estate"></iframe>
+                            <div class="project-overlay">
+                                <a href="https://21stcenturyrealestate.com.ng/" target="_blank" class="view-live-btn">
+                                    View Live Site <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <span class="project-tag">Real Estate</span>
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">MediConnect Platform</h3>
-                            <p class="project-desc">A comprehensive telemedicine platform connecting patients with healthcare providers. Features include video consultations, e-prescriptions, and AI-powered symptom checker.</p>
+                            <h3 class="project-title">21st Century Real Estate</h3>
+                            <p class="project-desc">A comprehensive real estate platform featuring property listings, advanced search filters, agent management, and inquiry system. Built to streamline property transactions and enhance user experience.</p>
                             <div class="project-tech">
-                                <span class="tech-badge">React</span>
-                                <span class="tech-badge">Node.js</span>
-                                <span class="tech-badge">WebRTC</span>
-                                <span class="tech-badge">MongoDB</span>
+                                <span class="tech-badge">Laravel</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Bootstrap</span>
+                                <span class="tech-badge">MySQL</span>
                             </div>
-                            <a href="#" class="project-link">
-                                View Case Study <i class="fas fa-arrow-right"></i>
+                            <a href="https://21stcenturyrealestate.com.ng/" target="_blank" class="project-link">
+                                Visit Website <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
@@ -1355,20 +1579,25 @@
                 <div class="col-lg-6 mb-4">
                     <div class="project-card">
                         <div class="project-image">
-                            <i class="fas fa-wallet project-icon-large"></i>
-                            <span class="project-tag">FinTech</span>
+                            <iframe class="project-iframe" src="https://thehpcatalyst.com/" title="The HP Catalyst"></iframe>
+                            <div class="project-overlay">
+                                <a href="https://thehpcatalyst.com/" target="_blank" class="view-live-btn">
+                                    View Live Site <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <span class="project-tag">Corporate</span>
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">PayFlow Solutions</h3>
-                            <p class="project-desc">Mobile-first payment gateway with multi-currency support, fraud detection, and real-time transaction tracking. Processed over $50M in transactions.</p>
+                            <h3 class="project-title">The HP Catalyst</h3>
+                            <p class="project-desc">Professional corporate website showcasing company services, team profiles, and business solutions. Built with pure PHP for optimal performance and custom functionality.</p>
                             <div class="project-tech">
-                                <span class="tech-badge">Flutter</span>
-                                <span class="tech-badge">Python</span>
-                                <span class="tech-badge">PostgreSQL</span>
-                                <span class="tech-badge">AWS</span>
+                                <span class="tech-badge">Pure PHP</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Bootstrap</span>
+                                <span class="tech-badge">MySQL</span>
                             </div>
-                            <a href="#" class="project-link">
-                                View Case Study <i class="fas fa-arrow-right"></i>
+                            <a href="https://thehpcatalyst.com/" target="_blank" class="project-link">
+                                Visit Website <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
@@ -1376,20 +1605,26 @@
                 <div class="col-lg-6 mb-4">
                     <div class="project-card">
                         <div class="project-image">
-                            <i class="fas fa-shopping-cart project-icon-large"></i>
+                            <iframe class="project-iframe" src="https://ginellafarms.com.ng/" title="Ginella Farms"></iframe>
+                            <div class="project-overlay">
+                                <a href="https://ginellafarms.com.ng/" target="_blank" class="view-live-btn">
+                                    View Live Site <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
                             <span class="project-tag">E-Commerce</span>
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">AfroMarket Hub</h3>
-                            <p class="project-desc">Pan-African e-commerce marketplace with integrated logistics, vendor management, and mobile money integration. Supporting 10,000+ vendors.</p>
+                            <h3 class="project-title">Ginella Farms</h3>
+                            <p class="project-desc">Full-featured e-commerce platform for agricultural products with integrated Flutterwave payment gateway, shopping cart, order management, and customer dashboard.</p>
                             <div class="project-tech">
-                                <span class="tech-badge">Vue.js</span>
                                 <span class="tech-badge">Laravel</span>
-                                <span class="tech-badge">Redis</span>
-                                <span class="tech-badge">Docker</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Bootstrap</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">Flutterwave</span>
                             </div>
-                            <a href="#" class="project-link">
-                                View Case Study <i class="fas fa-arrow-right"></i>
+                            <a href="https://ginellafarms.com.ng/" target="_blank" class="project-link">
+                                Visit Website <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
@@ -1397,20 +1632,26 @@
                 <div class="col-lg-6 mb-4">
                     <div class="project-card">
                         <div class="project-image">
-                            <i class="fas fa-graduation-cap project-icon-large"></i>
+                            <iframe class="project-iframe" src="https://odumaretech.com/" title="Odumare Tech LMS"></iframe>
+                            <div class="project-overlay">
+                                <a href="https://odumaretech.com/" target="_blank" class="view-live-btn">
+                                    View Live Site <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
                             <span class="project-tag">EdTech</span>
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">LearnSphere Academy</h3>
-                            <p class="project-desc">Interactive learning management system with live classes, gamification, progress tracking, and AI-powered personalized learning paths.</p>
+                            <h3 class="project-title">Odumare Tech LMS</h3>
+                            <p class="project-desc">Advanced Learning Management System with multiple user roles (students, instructors, external instructors), course marketplace, revenue sharing, and Flutterwave payment integration supporting 16+ currencies.</p>
                             <div class="project-tech">
-                                <span class="tech-badge">Next.js</span>
-                                <span class="tech-badge">Django</span>
-                                <span class="tech-badge">TensorFlow</span>
-                                <span class="tech-badge">Kubernetes</span>
+                                <span class="tech-badge">Laravel</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Bootstrap</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">Flutterwave</span>
                             </div>
-                            <a href="#" class="project-link">
-                                View Case Study <i class="fas fa-arrow-right"></i>
+                            <a href="https://odumaretech.com/" target="_blank" class="project-link">
+                                Visit Website <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
@@ -1467,14 +1708,82 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section id="contact" class="cta-section">
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
         <div class="container">
-            <h2>Let's Create Something Brilliant Together</h2>
-            <p>Have a project idea? Need technical support? Or just want to chat about the future of tech? We're all ears — and keyboards.</p>
-            <div class="d-flex justify-content-center flex-wrap gap-3" style="position: relative; z-index: 2;">
-                <a href="mailto:hello@daracotech.com" class="btn-hero" style="background: white; color: var(--dark);">Book a Free Discovery Call</a>
-                <a href="mailto:hello@daracotech.com" class="btn-hero" style="background: transparent; border: 2px solid white; color: white;">Contact Us</a>
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <span class="section-label">Get In Touch</span>
+                    <h2 class="section-title">Let's Create Something Brilliant Together</h2>
+                    <p class="contact-text">Have a project idea? Need technical support? Or just want to chat about the future of tech? We're all ears — and keyboards.</p>
+                    
+                    <div class="contact-info-cards">
+                        <div class="contact-info-card">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h5>Email Us</h5>
+                                <p>hello@daracotech.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-card">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h5>Call Us</h5>
+                                <p>+234 XXX XXX XXXX</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-card">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-info-content">
+                                <h5>Visit Us</h5>
+                                <p>Lagos, Nigeria</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-form-wrapper">
+                        <form id="contactForm" class="contact-form">
+                            <div class="mb-4">
+                                <label for="name" class="form-label">Full Name *</label>
+                                <input type="text" class="form-control contact-input" id="name" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" class="form-control contact-input" id="email" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control contact-input" id="phone">
+                            </div>
+                            <div class="mb-4">
+                                <label for="service" class="form-label">Service Interested In *</label>
+                                <select class="form-control contact-input" id="service" required>
+                                    <option value="">Select a service</option>
+                                    <option value="project-management">Project & Product Management</option>
+                                    <option value="web-development">Web Application Development</option>
+                                    <option value="api-integration">API Integrations</option>
+                                    <option value="it-support">IT Support & Maintenance</option>
+                                    <option value="consulting">Software Consulting</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="form-label">Your Message *</label>
+                                <textarea class="form-control contact-input" id="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">
+                                Send Message <i class="fas fa-paper-plane ms-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
